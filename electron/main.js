@@ -34,13 +34,36 @@ function createWindow() {
 
 // 启动FastAPI服务器
 function startFastAPIServer() {
-  // 使用Python虚拟环境运行FastAPI服务器
-  const venvPath = path.join(__dirname, '../venv/bin/python');
-  const appPath = path.join(__dirname, '../run_server.py');
+  const resourcesPath = isDev 
+    ? path.join(__dirname, '..') 
+    : process.resourcesPath;
   
-  pythonProcess = spawn(venvPath, [appPath], {
-    cwd: path.join(__dirname, '..'),
-    env: process.env
+  const appPath = isDev
+    ? path.join(__dirname, '../run_server.py')
+    : path.join(resourcesPath, 'app/run_server.py');
+  
+  // 根据操作系统确定Python可执行文件路径
+  let pythonCmd = 'python3';
+  
+  if (process.platform === 'win32') {
+    pythonCmd = 'python';
+  }
+  
+  const workingDir = isDev
+    ? path.join(__dirname, '..')
+    : path.join(resourcesPath, 'app');
+  
+  console.log('Starting FastAPI server...');
+  console.log('Python command:', pythonCmd);
+  console.log('App path:', appPath);
+  console.log('Working directory:', workingDir);
+  
+  pythonProcess = spawn(pythonCmd, [appPath], {
+    cwd: workingDir,
+    env: {
+      ...process.env,
+      PYTHONUNBUFFERED: '1'
+    }
   });
 
   pythonProcess.stdout.on('data', (data) => {
@@ -54,6 +77,11 @@ function startFastAPIServer() {
   pythonProcess.on('close', (code) => {
     console.log(`FastAPI process exited with code ${code}`);
   });
+  
+  // 等待服务器启动
+  setTimeout(() => {
+    console.log('FastAPI server should be ready now');
+  }, 3000);
 }
 
 app.whenReady().then(() => {

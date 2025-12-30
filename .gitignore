@@ -2,3 +2,11 @@ node_modules/
 *.log
 dist/
 .env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.DS_Store
+electron/dist/
+build/
