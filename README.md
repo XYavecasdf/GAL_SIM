@@ -139,6 +139,7 @@ npm run dist:linux  # Linux
 2. 将图标转换为 .ico 格式（可以使用在线转换工具）
 3. 将生成的 favicon.ico 文件替换 `gal_sim/static/favicon.ico`
 4. 重启应用以使更改生效
+> ⚠️Note: Electron的icon必须达到256x256
 
 ## CHANGELOG
 

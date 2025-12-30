@@ -7,29 +7,37 @@
 ### 必需软件
 
 1. **Node.js** (v16 或更高版本)
+   
    - 下载地址: https://nodejs.org/
    - 验证安装: `node --version`
 
 2. **npm** (通常随 Node.js 一起安装)
+   
    - 验证安装: `npm --version`
 
 3. **Python** (3.8 或更高版本)
+   
    - 下载地址: https://www.python.org/
    - 验证安装: `python --version` 或 `python3 --version`
 
 ### 系统特定要求
 
 #### Windows
+
 - Windows 7 或更高版本
 - 如需构建 macOS 或 Linux 版本，建议使用 CI/CD 或虚拟机
 
 #### macOS
+
 - macOS 10.13 或更高版本
 - Xcode Command Line Tools: `xcode-select --install`
 
 #### Linux
+
 - Ubuntu 18.04+ / Debian 9+ / Fedora 28+ 或其他现代 Linux 发行版
+
 - 安装必需的依赖:
+  
   ```bash
   # Ubuntu/Debian
   sudo apt-get install -y build-essential libssl-dev libffi-dev python3-dev
@@ -43,7 +51,7 @@
 ### 1. 克隆或下载项目
 
 ```bash
-git clone https://github.com/XYavecasdf/GAL_SIM.git
+git clone https://github.com/notvalid0/GAL_SIM.git
 cd GAL_SIM
 ```
 
@@ -140,13 +148,16 @@ npm run dist:all
 构建完成后，安装包将位于 `electron/dist/` 目录中：
 
 - **Windows**: 
+  
   - `GAL-SIM Setup X.X.X.exe` (安装程序)
   - `GAL-SIM-X.X.X-portable.exe` (便携版)
-  
+
 - **macOS**: 
-  - `GAL-SIM-X.X.X.dmg` (磁盘镜像)
   
+  - `GAL-SIM-X.X.X.dmg` (磁盘镜像)
+
 - **Linux**: 
+  
   - `GAL-SIM-X.X.X.AppImage` (AppImage 格式)
   - `gal-sim_X.X.X_amd64.deb` (Debian 包)
 
@@ -185,6 +196,7 @@ npm run dist:all
 
 1. **检查 Node.js 版本**: 确保使用 Node.js 16 或更高版本
 2. **清理缓存**: 
+   
    ```bash
    rm -rf node_modules
    npm install

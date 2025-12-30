@@ -20,7 +20,7 @@
   "author": "GAL-SIM",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^28.3.3",
+    "electron": "^39.2.7",
     "electron-builder": "^24.13.3"
   },
   "dependencies": {

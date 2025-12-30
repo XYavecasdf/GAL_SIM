@@ -4,6 +4,7 @@
   "directories": {
     "output": "dist"
   },
+
   "files": [
     "main.js",
     "preload.js",
