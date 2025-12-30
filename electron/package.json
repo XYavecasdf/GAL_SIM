@@ -6,7 +6,11 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux",
+    "dist:all": "electron-builder --win --mac --linux"
   },
   "keywords": [
     "galgame",

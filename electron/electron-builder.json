@@ -7,25 +7,87 @@
   "files": [
     "main.js",
     "preload.js",
-    "package.json"
+    "package.json",
+    "node_modules/**/*"
   ],
   "extraResources": [
     {
-      "from": "../",
-      "to": "app",
-      "filter": ["**/*", "!node_modules", "!venv", "!*.py", "!*.pyc", "!__pycache__", "!*.git*"]
+      "from": "../gal_sim",
+      "to": "app/gal_sim",
+      "filter": ["**/*"]
+    },
+    {
+      "from": "../requirements.txt",
+      "to": "app/requirements.txt"
+    },
+    {
+      "from": "../run_server.py",
+      "to": "app/run_server.py"
+    },
+    {
+      "from": "../.env.example",
+      "to": "app/.env.example"
+    },
+    {
+      "from": "../setup_dependencies.sh",
+      "to": "app/setup_dependencies.sh"
+    },
+    {
+      "from": "../setup_dependencies.bat",
+      "to": "app/setup_dependencies.bat"
+    },
+    {
+      "from": "../USER_GUIDE.md",
+      "to": "app/USER_GUIDE.md"
     }
   ],
   "win": {
-    "target": "nsis",
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      },
+      {
+        "target": "portable",
+        "arch": ["x64"]
+      }
+    ],
     "icon": "../gal_sim/static/favicon.ico"
   },
   "mac": {
-    "target": "dmg",
-    "icon": "../gal_sim/static/favicon.ico"
+    "target": [
+      {
+        "target": "dmg",
+        "arch": ["x64", "arm64"]
+      }
+    ],
+    "icon": "../gal_sim/static/favicon.ico",
+    "category": "public.app-category.entertainment"
   },
   "linux": {
-    "target": "AppImage",
-    "icon": "../gal_sim/static/favicon.ico"
+    "target": [
+      {
+        "target": "AppImage",
+        "arch": ["x64"]
+      },
+      {
+        "target": "deb",
+        "arch": ["x64"]
+      }
+    ],
+    "icon": "../gal_sim/static/favicon.ico",
+    "category": "Game"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "GAL-SIM"
+  },
+  "portable": {
+    "artifactName": "${productName}-${version}-portable.${ext}",
+    "requestExecutionLevel": "user",
+    "unpackDirName": "${productName}"
   }
 }
